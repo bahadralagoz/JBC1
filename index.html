@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JBC — Erkek Giyim</title>
+  <meta name="description" content="JBC erkek giyim: oversize sweatshirt, eşofman takımı, kapüşonlu, tişört ve şort.">
+  <meta name="theme-color" content="#824e59">
+  <link rel="preload" href="assets/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#konfigurator">İçeriğe geç</a>
+
+  <p class="proto-note">Önizleme: site henüz satışa açık değil. Sipariş için Trendyol mağazamızı kullanın.</p>
+
+  <header class="bar">
+    <a class="wordmark" href="#" aria-label="JBC ana sayfa">JBC</a>
+    <nav aria-label="Modeller">
+      <ul class="bar-models" id="bar-models"></ul>
+    </nav>
+    <button class="cart-btn" id="cart-open" type="button" aria-haspopup="dialog" aria-controls="cart">
+      <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path d="M5 8h14l-1.2 11.2a1 1 0 0 1-1 .8H7.2a1 1 0 0 1-1-.8L5 8Z M9 8V6.5a3 3 0 0 1 6 0V8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      <span>Sepet</span>
+      <span class="cart-count" id="cart-count" aria-live="polite">0</span>
+    </button>
+  </header>
+
+  <main>
+    <!-- Configurator / showroom -->
+    <section class="showroom" id="konfigurator" aria-labelledby="model-name">
+      <h1 class="backwall" id="model-name" aria-live="polite">POLO</h1>
+
+      <div class="stage">
+        <img class="figure" id="figure" src="assets/products/1047911815.webp" alt="" width="500" height="1500" fetchpriority="high" draggable="false">
+        <div class="plinth" aria-hidden="true"></div>
+      </div>
+
+      <form class="config" id="config" aria-label="Ürünü yapılandır">
+        <p class="model-full" id="model-full"></p>
+        <fieldset class="step">
+          <legend>Model</legend>
+          <div class="trims" id="trims"></div>
+        </fieldset>
+
+        <fieldset class="step">
+          <legend>Renk <span class="step-value" id="color-name"></span></legend>
+          <div class="chips" id="chips"></div>
+        </fieldset>
+
+        <fieldset class="step">
+          <legend>Beden</legend>
+          <div class="sizes" id="sizes"></div>
+          <p class="field-error" id="size-error" role="alert" hidden>Sepete eklemek için bir beden seçin.</p>
+        </fieldset>
+
+        <div class="buy">
+          <p class="price"><span id="price">—</span></p>
+          <p class="rating" id="rating" hidden></p>
+          <button class="primary" type="submit" id="add">Sepete ekle</button>
+          <a class="ty-link" id="ty-link" href="#" rel="noopener" target="_blank">Bu ürünü Trendyol’da incele<span class="sr-only"> (yeni sekmede açılır)</span></a>
+        </div>
+      </form>
+
+      <dl class="spec-strip" id="spec-strip"></dl>
+    </section>
+
+    <!-- Spec sheet -->
+    <section class="sheet" id="teknik" aria-labelledby="sheet-title">
+      <div class="sheet-head">
+        <h2 id="sheet-title">Teknik föy</h2>
+        <p>Altı model yan yana. Bilgiler Trendyol ürün sayfalarımızdan; fiyatlar Trendyol satış fiyatıdır.</p>
+      </div>
+      <div class="table-wrap">
+        <table class="spec-table" id="spec-table"></table>
+      </div>
+    </section>
+
+    <!-- Lineup -->
+    <section class="lineup" aria-labelledby="lineup-title">
+      <h2 id="lineup-title">Koleksiyon</h2>
+      <ol class="lineup-row" id="lineup"></ol>
+    </section>
+
+    <!-- Trendyol bridge -->
+    <section class="bridge" aria-labelledby="bridge-title">
+      <h2 id="bridge-title">Trendyol'da da JBC</h2>
+      <p>Site satışa açılana kadar tüm ürünlerimiz Trendyol mağazamızda.</p>
+      <a class="secondary" href="https://www.trendyol.com/sr?mid=1027483&amp;os=1" rel="noopener" target="_blank">Trendyol mağazasına git<span class="sr-only"> (yeni sekmede açılır)</span></a>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span class="wordmark small">JBC</span>
+    <p>Kendi tasarımımız, kendi üretimimiz. Erkek giyim.</p>
+    <a href="https://www.trendyol.com/sr?mid=1027483&amp;os=1" rel="noopener" target="_blank">Trendyol mağazası<span class="sr-only"> (yeni sekmede açılır)</span></a>
+    <p class="foot-legal">© <span id="year"></span> JBC</p>
+  </footer>
+
+  <!-- Cart drawer -->
+  <div class="scrim" id="scrim" hidden></div>
+  <aside class="cart" id="cart" role="dialog" aria-modal="true" aria-labelledby="cart-title" hidden>
+    <div class="cart-head">
+      <h2 id="cart-title">Sepet</h2>
+      <button type="button" class="icon-btn" id="cart-close" aria-label="Sepeti kapat">
+        <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <ul class="cart-items" id="cart-items"></ul>
+    <p class="cart-empty" id="cart-empty">Sepetiniz boş. Bir model seçip bedeninizi işaretleyin.</p>
+    <div class="cart-foot" id="cart-foot">
+      <p class="cart-total"><span>Ara toplam</span><strong id="cart-total">0 ₺</strong></p>
+      <button class="primary" type="button" disabled aria-describedby="checkout-note">Ödemeye geç</button>
+      <p class="cart-note" id="checkout-note">Ödeme altyapısı henüz bağlı değil. Şimdilik Trendyol mağazamızdan sipariş verebilirsiniz.</p>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="products.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
