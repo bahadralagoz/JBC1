@@ -12,7 +12,7 @@ Design first. The user chose to build a working storefront design/prototype now 
 
 ## Users
 
-Men buying everyday casualwear online in Turkey: sweatshirts, t-shirts, polo shirts and shorts. Age, style segment and price expectations beyond "currently buying on Trendyol" are not yet confirmed.
+Men buying everyday casualwear online in Turkey, today through Trendyol. Age and style segment are not yet confirmed; the catalogue (oversize fleece sweatshirts, hoodies, tracksuits, oversize printed tees, basic tees, stretch shorts) and Trendyol price points (399,90 TL to 1.999,90 TL) are the evidence.
 
 ## Product Purpose
 
@@ -30,9 +30,10 @@ Undecided. What makes JBC different from neighbouring menswear brands (fabric, f
 
 ## Capabilities and Constraints
 
-- Product categories: sweatshirts, t-shirts, polo shirts, shorts. Menswear only.
-- No women's line. (An earlier message said women's clothing; the user later corrected this to menswear only.)
-- Real product names, prices, sizes and stock are not in the repository yet.
+- Catalogue (from the supplied Trendyol export, `products.js`): Oversize Şardonlu Sweatshirt (7 colourways), Eşofman Takımı (5), Nakışlı Kapüşonlu (1), Kabarmalı Kadife Baskı Oversize Tişört (3), %100 Pamuk Tişört (2), Big Stretch Spor Şort (3).
+- The user mentioned polo shirts, but none are in the export, so none are shown.
+- The Trendyol store also lists two women's items (crop halter atlet). The user said the brand is menswear only, so they are left off the site.
+- Size availability, fabric weights and measurements are not in the export and are still to be supplied.
 
 ## Brand Commitments
 
@@ -41,8 +42,10 @@ Undecided. What makes JBC different from neighbouring menswear brands (fabric, f
 
 ## Evidence on Hand
 
-- The user has professional product photographs and a JBC logo. Neither is in the repository yet; they must be added (e.g. under `assets/`). Until then any imagery is placeholder and must be labelled as such.
-- No customers, testimonials, reviews, press, sales figures or certifications are on hand. Do not fabricate them.
+- Product photography: JBC's own Trendyol studio photos, cut out to transparent WebP in `assets/products/<trendyol-id>.webp` (origin embedded in each file).
+- Prices and ratings: Trendyol sale prices and Trendyol review scores from the export (JBC_Trendyol_Urun_Listesi.xlsx). Ratings are shown as Trendyol ratings, unfiltered.
+- Logo: the user has one, but it is not in the repository yet; the site uses a typeset "JBC" wordmark until it arrives.
+- No testimonials, press, sales figures or certifications are on hand. Do not fabricate them.
 
 ## Product Principles
 

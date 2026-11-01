@@ -114,7 +114,7 @@ a { color: inherit; text-underline-offset: .22em; text-decoration-thickness: 1px
 /* ============ Showroom ============ */
 .showroom {
   position: relative;
-  min-height: calc(100svh - 100px);
+  min-height: calc(100svh - 98px);
   max-height: 1100px;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(320px, 380px);
@@ -148,7 +148,7 @@ a { color: inherit; text-underline-offset: .22em; text-decoration-thickness: 1px
 }
 .figure {
   position: relative; z-index: 2;
-  height: min(74svh, 760px); width: auto; max-width: 100%;
+  height: clamp(380px, calc(100svh - 360px), 760px); width: auto; max-width: 100%;
   object-fit: contain; object-position: bottom center;
   margin-bottom: 30px;
   user-select: none;
@@ -156,15 +156,16 @@ a { color: inherit; text-underline-offset: .22em; text-decoration-thickness: 1px
 }
 /* half-body shots: the frame cuts the photo at the bottom, so it fades into the plinth */
 .figure[data-crop="bottom"] {
-  height: min(66svh, 680px);
-  -webkit-mask-image: linear-gradient(to bottom, #000 78%, transparent 99%);
-          mask-image: linear-gradient(to bottom, #000 78%, transparent 99%);
-  margin-bottom: 40px;
+  height: clamp(340px, calc(100svh - 400px), 660px);
+  -webkit-mask-image: linear-gradient(to bottom, #000 84%, transparent 100%);
+          mask-image: linear-gradient(to bottom, #000 84%, transparent 100%);
+  margin-bottom: 66px;
   filter: none;
 }
 /* shorts: cut at the chest, fade at the top */
+.stage[data-crop="top"] { padding-top: clamp(150px, 17vw, 250px); }
 .figure[data-crop="top"] {
-  height: min(60svh, 620px);
+  height: clamp(300px, calc(100svh - 470px), 560px);
   -webkit-mask-image: linear-gradient(to top, #000 80%, transparent 99%);
           mask-image: linear-gradient(to top, #000 80%, transparent 99%);
   filter: drop-shadow(0 6px 6px rgb(0 0 0 / .16));
@@ -178,9 +179,13 @@ a { color: inherit; text-underline-offset: .22em; text-decoration-thickness: 1px
   transform: translateX(-50%);
   border-radius: 50%;
   background:
-    radial-gradient(closest-side, color-mix(in srgb, var(--ink) 10%, transparent), transparent 70%),
+    radial-gradient(50% 60% at 50% 42%, rgb(255 255 255 / .26), transparent 72%),
+    linear-gradient(to bottom, rgb(255 255 255 / .1), transparent 60%),
     var(--floor);
-  box-shadow: 0 1px 0 color-mix(in srgb, var(--ink) 18%, transparent) inset, 0 18px 40px rgb(0 0 0 / .18);
+  box-shadow:
+    0 1px 0 rgb(255 255 255 / .28) inset,
+    0 -3px 0 rgb(0 0 0 / .12) inset,
+    0 22px 44px rgb(0 0 0 / .22);
   transition: background-color var(--room-t);
 }
 /* ============ Config column ============ */
@@ -190,7 +195,7 @@ a { color: inherit; text-underline-offset: .22em; text-decoration-thickness: 1px
   display: flex; flex-direction: column; gap: 22px;
   padding: 28px 0;
 }
-.model-full { font-size: 14px; font-weight: 600; color: var(--ink-2); margin-bottom: -8px; }
+.model-full { font-size: 22px; line-height: 1.2; font-weight: 750; font-stretch: 108%; letter-spacing: -.01em; margin: 0 0 -4px; text-wrap: balance; }
 .step { border: 0; margin: 0; padding: 0; min-width: 0; }
 .step legend {
   display: flex; justify-content: space-between; align-items: baseline; width: 100%;
@@ -222,6 +227,13 @@ a { color: inherit; text-underline-offset: .22em; text-decoration-thickness: 1px
   transition: transform .25s var(--ease);
 }
 .chip:hover { transform: scale(1.06); }
+.chip[data-mark]::before {
+  content: ""; position: absolute; left: 50%; top: 50%; width: 8px; height: 8px; margin: -4px 0 0 -4px;
+  border-radius: 50%; background: var(--mark); box-shadow: 0 0 0 1px rgb(0 0 0 / .15);
+}
+.chips-key[hidden] { display: none; }
+.chips-key { margin-top: 10px; font-size: 12px; color: var(--ink-2); display: flex; align-items: center; gap: 6px; }
+.chips-key i { width: 8px; height: 8px; border-radius: 50%; background: var(--ink); }
 .chip::after {
   content: ""; position: absolute; inset: -5px; border-radius: 50%;
   border: 2px solid transparent; transition: border-color .2s;
@@ -238,6 +250,8 @@ a { color: inherit; text-underline-offset: .22em; text-decoration-thickness: 1px
 }
 .size:hover { border-color: var(--ink); }
 .size:has(input:checked) { background: var(--ink); color: var(--room); border-color: var(--ink); }
+.size-note { margin-top: 8px; font-size: 12px; color: var(--ink-2); }
+.size-note a { color: inherit; }
 .field-error { margin-top: 10px; font-size: 13px; font-weight: 600; }
 .field-error::before { content: "! "; }
 

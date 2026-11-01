@@ -67,6 +67,10 @@
     $('meta[name="theme-color"]').content = rgbStr(r.room);
   }
 
+  // Chips for variants with a logo or detail carry a dot, so look-alike colours stay distinguishable.
+  const MARKED = /nakışlı|biyeli|baskılı/i;
+  const markColor = (hex) => (lum(hexToRgb(hex)) > 0.4 ? "#141517" : "#f6f5f1");
+
   /* ---------- State ---------- */
   const state = { p: 0, c: 0, size: null };
   const product = () => PRODUCTS[state.p];
@@ -101,12 +105,14 @@
     const p = product();
     $("#chips").innerHTML = p.colors
       .map(
-        (c, i) => `<label class="chip" style="--chip:${c.hex}" title="${c.name} · ${c.note}">
+        (c, i) => `<label class="chip" style="--chip:${c.hex};--mark:${markColor(c.hex)}" title="${c.name} · ${c.note}"${MARKED.test(c.note) ? " data-mark" : ""}>
           <input type="radio" name="color" value="${i}" ${i === state.c ? "checked" : ""}>
           <span class="sr-only">${c.name}, ${c.note}</span>
         </label>`
       )
       .join("");
+    const marks = p.colors.filter((c) => MARKED.test(c.note)).length;
+    $("#chips-key").hidden = marks === 0 || marks === p.colors.length;
     renderColorInfo();
   }
 
@@ -115,6 +121,7 @@
     $("#color-name").textContent = `${c.name} · ${c.note}`;
     $("#price").textContent = money(c.price);
     $("#ty-link").href = TY[c.id];
+    $("#size-ty").href = TY[c.id];
     const r = $("#rating");
     if (c.rating) {
       r.hidden = false;

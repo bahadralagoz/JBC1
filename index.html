@@ -29,7 +29,7 @@
   <main>
     <!-- Configurator / showroom -->
     <section class="showroom" id="konfigurator" aria-labelledby="model-name">
-      <h1 class="backwall" id="model-name" aria-live="polite">POLO</h1>
+      <h1 class="backwall" id="model-name" aria-live="polite">SWEATSHİRT</h1>
 
       <div class="stage">
         <img class="figure" id="figure" src="assets/products/1047911815.webp" alt="" width="500" height="1500" fetchpriority="high" draggable="false">
@@ -37,7 +37,7 @@
       </div>
 
       <form class="config" id="config" aria-label="Ürünü yapılandır">
-        <p class="model-full" id="model-full"></p>
+        <h2 class="model-full" id="model-full">Oversize Şardonlu Sweatshirt</h2>
         <fieldset class="step">
           <legend>Model</legend>
           <div class="trims" id="trims"></div>
@@ -46,11 +46,13 @@
         <fieldset class="step">
           <legend>Renk <span class="step-value" id="color-name"></span></legend>
           <div class="chips" id="chips"></div>
+          <p class="chips-key" id="chips-key" hidden><i aria-hidden="true"></i>Noktalı renkler: logolu / detaylı model</p>
         </fieldset>
 
         <fieldset class="step">
           <legend>Beden</legend>
           <div class="sizes" id="sizes"></div>
+          <p class="size-note">Beden listesi örnektir; güncel stok için <a id="size-ty" href="#" rel="noopener" target="_blank">Trendyol sayfasına<span class="sr-only"> (yeni sekmede açılır)</span></a> bakın.</p>
           <p class="field-error" id="size-error" role="alert" hidden>Sepete eklemek için bir beden seçin.</p>
         </fieldset>
 
