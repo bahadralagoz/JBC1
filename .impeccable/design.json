@@ -1,0 +1,505 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-01T11:12:52.991Z",
+  "title": "Design System: JBC",
+  "extensions": {
+    "colorMeta": {
+      "room": {
+        "role": "primary",
+        "displayName": "Colourway Room (Bordo boot state)",
+        "canonical": "#824e59",
+        "oklch": "oklch(48.7% 0.071 6.4)",
+        "purpose": "Derived live from the selected garment hex by roomFor(); the page background of bar and showroom.",
+        "tonalRamp": [
+          "#170509",
+          "#361a20",
+          "#58333b",
+          "#7d4e58",
+          "#a3707a",
+          "#c4969f",
+          "#e6bfc6",
+          "#ffe5eb"
+        ],
+        "runtime": {
+          "source": "app.js roomFor(hex)",
+          "garmentHexSource": "products.js colors[].hex",
+          "bands": [
+            {
+              "when": "L > 0.55",
+              "room": "mix(garment, black, 0.16)"
+            },
+            {
+              "when": "0.25 < L <= 0.55",
+              "room": "mix(garment, white, 0.28)"
+            },
+            {
+              "when": "0.06 < L <= 0.25",
+              "room": "mix(garment, white, 0.12)"
+            },
+            {
+              "when": "L <= 0.06",
+              "room": "mix(garment, white, 0.20)"
+            }
+          ],
+          "ink": "argmax contrast(room, #141517 | #f6f5f1)",
+          "ink2": "mix(ink, room, 0.10); if contrast < 4.5 then ink",
+          "wall": "mix(room, ink, 0.66)",
+          "floor": "mix(room, black, 0.16)",
+          "line": "mix(room, ink, 0.32)",
+          "measured": {
+            "inkContrast": "5.01–11.83",
+            "ink2Contrast": "4.67–9.59 (fallback fires on Kahve)",
+            "wallContrast": "3.07–4.88",
+            "lineContrast": "1.68–2.31",
+            "controlOutline": "color-mix(ink 70%, room); >= 3.27:1 in every colourway (WCAG 1.4.11)",
+            "garmentVsRoom": "1.20–1.92"
+          }
+        }
+      },
+      "room-ink": {
+        "role": "primary",
+        "displayName": "Room Ink",
+        "canonical": "#f6f5f1",
+        "oklch": "oklch(97.0% 0.005 95.1)",
+        "purpose": "Dark #141517 or light #f6f5f1, whichever contrasts more with the room (5.01–11.83:1 across the catalogue).",
+        "tonalRamp": [
+          "#0b0b0a",
+          "#242422",
+          "#40403d",
+          "#5e5e5a",
+          "#81807d",
+          "#a5a4a2",
+          "#cbcac8",
+          "#efeeec"
+        ]
+      },
+      "room-ink-2": {
+        "role": "primary",
+        "displayName": "Room Secondary Ink",
+        "canonical": "#eae4e2",
+        "oklch": "oklch(92.3% 0.007 39.5)",
+        "purpose": "mix(ink, room, 0.10); falls back to full ink below 4.5:1.",
+        "tonalRamp": [
+          "#0d0b0a",
+          "#262322",
+          "#423f3e",
+          "#615c5b",
+          "#847f7d",
+          "#a8a3a2",
+          "#cdc9c8",
+          "#f1eeed"
+        ]
+      },
+      "room-wall": {
+        "role": "primary",
+        "displayName": "Back-wall Lettering",
+        "canonical": "#cfbcbd",
+        "oklch": "oklch(81.1% 0.022 14.0)",
+        "purpose": "mix(room, ink, 0.66); display-only model name (3.07–4.88:1).",
+        "tonalRamp": [
+          "#0f090a",
+          "#2a2122",
+          "#483c3d",
+          "#68595a",
+          "#8c7c7c",
+          "#afa0a1",
+          "#d3c7c8",
+          "#f6ecec"
+        ]
+      },
+      "room-floor": {
+        "role": "primary",
+        "displayName": "Turntable Floor",
+        "canonical": "#6d424b",
+        "oklch": "oklch(43.2% 0.061 6.3)",
+        "purpose": "mix(room, black, 0.16); base of the lit disc.",
+        "tonalRamp": [
+          "#150609",
+          "#341c21",
+          "#55353c",
+          "#795059",
+          "#9e727b",
+          "#c099a0",
+          "#e2c1c6",
+          "#ffe7eb"
+        ]
+      },
+      "room-line": {
+        "role": "primary",
+        "displayName": "Room Hairline",
+        "canonical": "#a7838a",
+        "oklch": "oklch(64.6% 0.045 5.4)",
+        "purpose": "mix(room, ink, 0.32); borders and rules (1.68–2.31:1, never a state cue).",
+        "tonalRamp": [
+          "#13070a",
+          "#301e22",
+          "#50383d",
+          "#72545a",
+          "#97767c",
+          "#b99ca1",
+          "#dcc3c8",
+          "#fde9ec"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Studio Paper",
+        "canonical": "#f4f4f2",
+        "oklch": "oklch(96.7% 0.003 106.4)",
+        "purpose": "Background of the sections below the showroom and the cart drawer.",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242423",
+          "#40403f",
+          "#5e5e5c",
+          "#80807f",
+          "#a5a5a3",
+          "#cacac9",
+          "#eeeeed"
+        ]
+      },
+      "paper-ink": {
+        "role": "neutral",
+        "displayName": "Paper Ink",
+        "canonical": "#141517",
+        "oklch": "oklch(19.5% 0.004 264.5)",
+        "purpose": "Text and 2px rules on paper (16.59:1); also the dark-ink constant of the room formula.",
+        "tonalRamp": [
+          "#0b0b0c",
+          "#232425",
+          "#3f4041",
+          "#5c5e60",
+          "#7f8083",
+          "#a3a4a7",
+          "#c9cacc",
+          "#eeeef0"
+        ]
+      },
+      "paper-ink-2": {
+        "role": "neutral",
+        "displayName": "Paper Secondary Ink",
+        "canonical": "#55575c",
+        "oklch": "oklch(45.7% 0.008 268.5)",
+        "purpose": "Secondary text on paper (6.57:1).",
+        "tonalRamp": [
+          "#0a0b0d",
+          "#232427",
+          "#3e4043",
+          "#5c5d62",
+          "#7e8085",
+          "#a3a4a9",
+          "#c9cace",
+          "#edeef1"
+        ]
+      },
+      "paper-line": {
+        "role": "neutral",
+        "displayName": "Paper Hairline",
+        "canonical": "#d6d6d3",
+        "oklch": "oklch(87.5% 0.004 106.5)",
+        "purpose": "1px row and section rules (decorative, 1.32:1).",
+        "tonalRamp": [
+          "#0b0b0a",
+          "#242423",
+          "#40403e",
+          "#5e5e5b",
+          "#80807e",
+          "#a5a5a2",
+          "#cacac9",
+          "#eeeeed"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Back-wall Display",
+        "purpose": "The model name across the showroom's back wall, Turkish uppercase, h1. 5–6 letter names use clamp(64px, 14.5vw, 250px); fitWall() shrinks it to the stage width."
+      },
+      "headline": {
+        "displayName": "Section Headline",
+        "purpose": "Paper-section headings (Teknik föy, Koleksiyon); bridge heading at clamp(32px, 4.6vw, 64px)."
+      },
+      "price": {
+        "displayName": "Configured Price",
+        "purpose": "The price above the primary button; tabular numerals, tr-TR format with ' TL'."
+      },
+      "wordmark": {
+        "displayName": "Typeset Wordmark",
+        "purpose": "'JBC' in the bar (26px) and footer (20px) until the logo file arrives."
+      },
+      "title": {
+        "displayName": "Product Title",
+        "purpose": "Full product name heading the configurator, text-wrap: balance."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running text; paper descriptions held to 46ch; tabular numerals page-wide."
+      },
+      "label": {
+        "displayName": "Step Label",
+        "purpose": "Fieldset legends: Model, Renk, Beden."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Spec-strip terms, size note, chips key, rating, cart notes, prototype banner."
+      }
+    },
+    "fonts": [
+      {
+        "family": "Archivo",
+        "source": "assets/fonts/archivo-latin-wdth-normal.woff2 + archivo-latin-ext-wdth-normal.woff2",
+        "format": "woff2-variations",
+        "axes": {
+          "wght": "100 900",
+          "wdth": "62% 125%"
+        },
+        "display": "swap",
+        "license": "assets/fonts/ARCHIVO-OFL.txt"
+      }
+    ],
+    "shadows": [
+      {
+        "name": "figure",
+        "value": "drop-shadow(0 24px 30px rgb(0 0 0 / .22)) drop-shadow(0 3px 5px rgb(0 0 0 / .14))",
+        "purpose": "filter on full-body cut-outs standing on the disc."
+      },
+      {
+        "name": "figure-shorts",
+        "value": "drop-shadow(0 6px 6px rgb(0 0 0 / .16))",
+        "purpose": "filter on shorts shots; half-body shots use none and fade into the disc."
+      },
+      {
+        "name": "turntable",
+        "value": "0 1px 0 rgb(255 255 255 / .28) inset, 0 -3px 0 rgb(0 0 0 / .12) inset, 0 22px 44px rgb(0 0 0 / .22)",
+        "purpose": "The lit elliptical disc, over radial-gradient(50% 60% at 50% 42%, rgb(255 255 255 / .26), transparent 72%) on room-floor."
+      },
+      {
+        "name": "primary",
+        "value": "0 10px 24px rgb(0 0 0 / .18)",
+        "purpose": "Primary button at rest."
+      },
+      {
+        "name": "primary-hover",
+        "value": "0 14px 30px rgb(0 0 0 / .24)",
+        "purpose": "Primary button hover, with translateY(-1px)."
+      },
+      {
+        "name": "paint-chip",
+        "value": "0 0 0 1px rgb(0 0 0 / .18) inset, 0 2px 6px rgb(0 0 0 / .16)",
+        "purpose": "Round colour chips."
+      },
+      {
+        "name": "drawer",
+        "value": "-20px 0 60px rgb(0 0 0 / .22)",
+        "purpose": "Cart drawer, over scrim rgb(10 10 12 / .45)."
+      },
+      {
+        "name": "toast",
+        "value": "0 10px 30px rgb(0 0 0 / .25)",
+        "purpose": "Add-to-cart toast."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-showroom",
+        "value": "cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "Default easing: room repaint, figure entry, drawer, chip and tile hovers."
+      },
+      {
+        "name": "room-repaint",
+        "value": "700ms cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "Background, text, rule and disc colour when the colourway changes."
+      },
+      {
+        "name": "figure-out",
+        "value": "170ms cubic-bezier(.5, 0, .75, 0)",
+        "purpose": "Old photo fades, slides 5% and blurs 6px."
+      },
+      {
+        "name": "figure-in",
+        "value": "560ms cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "New photo enters from 7% in the direction of travel after decode()."
+      },
+      {
+        "name": "drawer",
+        "value": "320ms cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "Cart drawer slide; scrim fades over 300ms."
+      },
+      {
+        "name": "tile-lift",
+        "value": "600ms cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "Collection photo rises 6px and scales 1.02 on hover."
+      },
+      {
+        "name": "cart-bump",
+        "value": "420ms cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "Cart button scales to 1.12 and back on add."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "0.01ms",
+        "purpose": "prefers-reduced-motion collapses all transitions; figure swap and cart bump are skipped."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "single-column",
+        "value": "980px",
+        "purpose": "max-width: one-column showroom, bar nav hidden, trims 3-up, collection 3-up."
+      },
+      {
+        "name": "phone",
+        "value": "520px",
+        "purpose": "max-width: trims and collection 2-up."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Sepete ekle: a pill of room ink with room-coloured text; the one shadowed action in the showroom.",
+      "html": "<button class=\"ds-btn-primary\">Sepete ekle</button>",
+      "css": ".ds-btn-primary{height:56px;padding:0 48px;border:0;border-radius:999px;background:#f6f5f1;color:#824e59;font-family:Archivo,system-ui,sans-serif;font-weight:750;font-size:16px;font-stretch:112%;letter-spacing:.01em;box-shadow:0 10px 24px rgb(0 0 0 / .18);cursor:pointer;transition:transform .25s cubic-bezier(.16,1,.3,1),box-shadow .25s cubic-bezier(.16,1,.3,1)}.ds-btn-primary:hover{transform:translateY(-1px);box-shadow:0 14px 30px rgb(0 0 0 / .24)}.ds-btn-primary:active{transform:translateY(0)}.ds-btn-primary:focus-visible{outline:2px solid #f6f5f1;outline-offset:3px}.ds-btn-primary:disabled{opacity:.45;box-shadow:none;cursor:not-allowed}"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Outlined pill on paper that inverts on hover; used for the Trendyol store link.",
+      "html": "<a class=\"ds-btn-secondary\" href=\"#\">Trendyol mağazasına git</a>",
+      "css": ".ds-btn-secondary{display:inline-flex;align-items:center;height:52px;padding:0 24px;border-radius:999px;border:1.5px solid #141517;background:#f4f4f2;color:#141517;font-family:Archivo,system-ui,sans-serif;font-weight:700;font-size:16px;text-decoration:none;white-space:nowrap;transition:background-color .2s,color .2s}.ds-btn-secondary:hover{background:#141517;color:#f4f4f2}.ds-btn-secondary:focus-visible{outline:2px solid #141517;outline-offset:3px}"
+    },
+    {
+      "name": "Model Trim Selector",
+      "kind": "custom",
+      "refersTo": "trim-selector",
+      "description": "Rectangular trim cards for choosing the model; selected gets an ink border plus inset ring.",
+      "html": "<div class=\"ds-trims\"><label class=\"ds-trim\"><input type=\"radio\" name=\"m\" checked><span class=\"ds-trim-name\">Sweatshirt</span><span class=\"ds-trim-price\">699,90 TL’den</span></label><label class=\"ds-trim\"><input type=\"radio\" name=\"m\"><span class=\"ds-trim-name\">Eşofman Takımı</span><span class=\"ds-trim-price\">1.799,90 TL’den</span></label></div>",
+      "css": ".ds-trims{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:16px;background:#824e59;color:#f6f5f1;font-family:Archivo,system-ui,sans-serif;font-variant-numeric:tabular-nums}.ds-trim{position:relative;display:flex;flex-direction:column;gap:1px;padding:10px 14px;border-radius:10px;border:1px solid #a7838a;cursor:pointer;transition:border-color .2s,background-color .2s}.ds-trim input{position:absolute;inset:0;opacity:0;margin:0;cursor:pointer}.ds-trim:hover{background:color-mix(in srgb,#f6f5f1 5%,transparent)}.ds-trim:has(input:checked){border-color:#f6f5f1;box-shadow:0 0 0 1px #f6f5f1 inset}.ds-trim:has(input:focus-visible){outline:2px solid #f6f5f1;outline-offset:2px}.ds-trim-name{font-weight:700;font-stretch:112%;font-size:15px;line-height:1.25}.ds-trim-price{font-size:13px;color:#eae4e2}"
+    },
+    {
+      "name": "Colour Chips",
+      "kind": "chip",
+      "refersTo": "colour-chip",
+      "description": "Round paint chips filled with the garment hex; a dot marks logo/detail variants; ink ring when selected, dashed when focused.",
+      "html": "<div class=\"ds-chips\"><label class=\"ds-chip ds-mark\" style=\"--chip:#63222f;--mark:#f6f5f1\"><input type=\"radio\" name=\"c\" checked aria-label=\"Bordo\"></label><label class=\"ds-chip ds-mark\" style=\"--chip:#d4ba34;--mark:#141517\"><input type=\"radio\" name=\"c\" aria-label=\"Hardal\"></label><label class=\"ds-chip\" style=\"--chip:#926e61\"><input type=\"radio\" name=\"c\" aria-label=\"Kahve\"></label><label class=\"ds-chip\" style=\"--chip:#30405d\"><input type=\"radio\" name=\"c\" aria-label=\"İndigo\"></label></div>",
+      "css": ".ds-chips{display:flex;flex-wrap:wrap;gap:12px;padding:16px;background:#824e59}.ds-chip{position:relative;width:36px;height:36px;border-radius:50%;background:var(--chip);cursor:pointer;box-shadow:0 0 0 1px rgb(0 0 0 / .18) inset,0 2px 6px rgb(0 0 0 / .16);transition:transform .25s cubic-bezier(.16,1,.3,1)}.ds-chip input{position:absolute;inset:0;opacity:0;margin:0;cursor:pointer}.ds-chip:hover{transform:scale(1.06)}.ds-mark::before{content:\"\";position:absolute;left:50%;top:50%;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:var(--mark);box-shadow:0 0 0 1px rgb(0 0 0 / .15)}.ds-chip::after{content:\"\";position:absolute;inset:-5px;border-radius:50%;border:2px solid transparent;transition:border-color .2s}.ds-chip:has(input:checked)::after{border-color:#f6f5f1}.ds-chip:has(input:focus-visible)::after{border-color:#f6f5f1;border-style:dashed}"
+    },
+    {
+      "name": "Size Grid",
+      "kind": "input",
+      "refersTo": "size-cell",
+      "description": "Five 44px cells; selected fills with room ink.",
+      "html": "<div class=\"ds-sizes\"><label class=\"ds-size\"><input type=\"radio\" name=\"s\"><span>S</span></label><label class=\"ds-size\"><input type=\"radio\" name=\"s\" checked><span>M</span></label><label class=\"ds-size\"><input type=\"radio\" name=\"s\"><span>L</span></label><label class=\"ds-size\"><input type=\"radio\" name=\"s\"><span>XL</span></label><label class=\"ds-size\"><input type=\"radio\" name=\"s\"><span>XXL</span></label></div>",
+      "css": ".ds-sizes{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;padding:16px;background:#824e59;color:#f6f5f1;font-family:Archivo,system-ui,sans-serif}.ds-size{position:relative;display:grid;place-items:center;height:44px;border-radius:8px;border:1px solid #a7838a;cursor:pointer;font-weight:650;font-size:14px;transition:background-color .2s,color .2s,border-color .2s}.ds-size input{position:absolute;inset:0;opacity:0;margin:0;cursor:pointer}.ds-size:hover{border-color:#f6f5f1}.ds-size:has(input:checked){background:#f6f5f1;color:#824e59;border-color:#f6f5f1}.ds-size:has(input:focus-visible){outline:2px solid #f6f5f1;outline-offset:2px}"
+    },
+    {
+      "name": "Showroom Bar",
+      "kind": "nav",
+      "refersTo": "nav-model-current",
+      "description": "Sticky translucent room bar: typeset wordmark, model pills, cart pill with ink count.",
+      "html": "<header class=\"ds-bar\"><a class=\"ds-wordmark\" href=\"#\">JBC</a><nav><a class=\"ds-nav\" href=\"#\" aria-current=\"true\">Sweatshirt</a><a class=\"ds-nav\" href=\"#\">Kapüşonlu</a><a class=\"ds-nav\" href=\"#\">Şort</a></nav><button class=\"ds-cart\"><svg aria-hidden=\"true\" viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><path d=\"M5 8h14l-1.2 11.2a1 1 0 0 1-1 .8H7.2a1 1 0 0 1-1-.8L5 8Z M9 8V6.5a3 3 0 0 1 6 0V8\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linejoin=\"round\"/></svg><span>Sepet</span><span class=\"ds-count\">2</span></button></header>",
+      "css": ".ds-bar{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:24px;padding:14px 24px;background:color-mix(in srgb,#824e59 88%,transparent);backdrop-filter:saturate(1.2) blur(10px);border-bottom:1px solid color-mix(in srgb,#a7838a 50%,transparent);color:#f6f5f1;font-family:Archivo,system-ui,sans-serif}.ds-bar nav{display:flex;gap:4px;justify-content:center}.ds-wordmark{font-weight:900;font-stretch:125%;font-size:26px;letter-spacing:-.02em;line-height:1;text-decoration:none;color:inherit}.ds-nav{padding:8px 12px;border-radius:999px;text-decoration:none;font-size:14px;font-weight:550;color:#eae4e2;transition:color .2s,background-color .2s}.ds-nav:hover{color:#f6f5f1}.ds-nav[aria-current]{color:#f6f5f1;background:color-mix(in srgb,#f6f5f1 9%,transparent)}.ds-nav:focus-visible,.ds-cart:focus-visible{outline:2px solid #f6f5f1;outline-offset:3px}.ds-cart{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 8px 0 14px;border-radius:999px;border:1px solid #a7838a;background:transparent;color:inherit;font:inherit;font-size:14px;font-weight:600;cursor:pointer;transition:background-color .2s}.ds-cart:hover{background:color-mix(in srgb,#f6f5f1 7%,transparent)}.ds-count{min-width:24px;height:24px;padding:0 7px;border-radius:999px;display:grid;place-items:center;font-size:12px;font-weight:700;background:#f6f5f1;color:#824e59}"
+    },
+    {
+      "name": "Showroom Stage",
+      "kind": "custom",
+      "refersTo": "room",
+      "description": "Signature: the back-wall model name in room-wall behind the figure, which stands on the lit turntable disc.",
+      "html": "<div class=\"ds-stage\"><span class=\"ds-wall\">SWEATSHİRT</span><div class=\"ds-figure\"></div><div class=\"ds-plinth\"></div></div>",
+      "css": ".ds-stage{position:relative;height:320px;overflow:hidden;background:#824e59;font-family:Archivo,system-ui,sans-serif;transition:background-color 700ms cubic-bezier(.16,1,.3,1)}.ds-wall{position:absolute;left:16px;top:12px;font-weight:900;font-stretch:125%;font-size:64px;line-height:.8;letter-spacing:-.035em;color:#cfbcbd;white-space:nowrap}.ds-figure{position:absolute;z-index:2;left:50%;bottom:40px;width:90px;height:200px;margin-left:-45px;border-radius:40px 40px 8px 8px;background:#63222f;filter:drop-shadow(0 24px 30px rgb(0 0 0 / .22)) drop-shadow(0 3px 5px rgb(0 0 0 / .14))}.ds-plinth{position:absolute;z-index:1;bottom:6px;left:50%;width:min(360px,96%);aspect-ratio:6/1;transform:translateX(-50%);border-radius:50%;background:radial-gradient(50% 60% at 50% 42%,rgb(255 255 255 / .26),transparent 72%),linear-gradient(to bottom,rgb(255 255 255 / .1),transparent 60%),#6d424b;box-shadow:0 1px 0 rgb(255 255 255 / .28) inset,0 -3px 0 rgb(0 0 0 / .12) inset,0 22px 44px rgb(0 0 0 / .22)}"
+    },
+    {
+      "name": "Spec Strip",
+      "kind": "custom",
+      "refersTo": "room-line",
+      "description": "Signature: up to four specs along the stage's bottom edge under a room hairline.",
+      "html": "<dl class=\"ds-spec\"><div><dt>Kumaş</dt><dd>Şardonlu</dd></div><div><dt>Kalıp</dt><dd>Oversize</dd></div><div><dt>Yaka</dt><dd>Bisiklet yaka</dd></div><div><dt>Detay</dt><dd>Nakışlı logo</dd></div></dl>",
+      "css": ".ds-spec{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:0;padding:16px 16px 24px;border-top:1px solid #a7838a;background:#824e59;color:#f6f5f1;font-family:Archivo,system-ui,sans-serif}.ds-spec div{padding-right:16px;min-width:0}.ds-spec dt{font-size:12px;color:#eae4e2}.ds-spec dd{margin:2px 0 0;font-size:14px;font-weight:650}"
+    },
+    {
+      "name": "Collection Tile",
+      "kind": "card",
+      "refersTo": "paper",
+      "description": "3:4 photo window on a garment-tinted paper ground with 14px top corners, standing on the row's 2px ink rule.",
+      "html": "<button class=\"ds-tile\" style=\"--chip:#63222f\"><span class=\"ds-tile-fig\"></span><span class=\"ds-tile-name\">Sweatshirt</span><span class=\"ds-tile-meta\">7 renk · 699,90 TL’den</span></button>",
+      "css": ".ds-tile{width:200px;border:0;border-bottom:2px solid #141517;background:#f4f4f2;padding:0 0 20px;display:grid;gap:4px;text-align:left;cursor:pointer;color:#141517;font-family:Archivo,system-ui,sans-serif}.ds-tile-fig{display:block;aspect-ratio:3/4;border-radius:14px 14px 0 0;background:color-mix(in srgb,var(--chip) 38%,#f4f4f2);transition:transform .6s cubic-bezier(.16,1,.3,1)}.ds-tile:hover .ds-tile-fig{transform:translateY(-6px) scale(1.02)}.ds-tile:focus-visible{outline:2px solid #141517;outline-offset:3px}.ds-tile-name{margin-top:12px;font-weight:800;font-stretch:112%;font-size:18px;line-height:1.2}.ds-tile-meta{font-size:14px;color:#55575c}"
+    },
+    {
+      "name": "Toast",
+      "kind": "custom",
+      "refersTo": "toast",
+      "description": "Ink pill confirming an add to cart.",
+      "html": "<div class=\"ds-toast\" role=\"status\">Sweatshirt, Bordo, M sepete eklendi.</div>",
+      "css": ".ds-toast{display:inline-block;padding:12px 18px;border-radius:999px;background:#f6f5f1;color:#824e59;font-family:Archivo,system-ui,sans-serif;font-size:14px;font-weight:600;box-shadow:0 10px 30px rgb(0 0 0 / .25)}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Colourway Showroom",
+    "overview": "JBC is presented the way a car is launched: one piece at a time, standing on a lit turntable in a room painted the colour of the garment. The configurator is the page. Picking a colour does not swap a thumbnail; it repaints the room. Background, ink, the giant model name on the back wall, the floor disc and every hairline are computed live from the garment's sampled hex, so the whole first viewport always belongs to exactly one colourway. Below the showroom the world steps out into pale studio-grey paper for the spec sheet, the collection row, the Trendyol bridge and the footer.\n\nThe system is dense where buying happens (a 320–380px configurator column of trims, chips, sizes, price and one pill button) and monumental where identity happens (an expanded, 900-weight model name up to 300px behind the figure). Type is one family, Archivo variable, used across its width axis: wide and heavy for names, near-normal for reading, tabular numerals everywhere. Ornament is limited to things a showroom actually has: the lit elliptical disc, the photo's drop shadow, hairline spec rules, round paint-chip swatches.\n\nThe fashion default of a full-bleed campaign slider over a grid of equal product cards is the rejected reference; one configured piece leads, the catalogue follows as a spec table.",
+    "keyCharacteristics": [
+      "One garment, one room: the page colour is derived from the selected colourway, never chosen independently.",
+      "Two materials only: the tinted showroom above, neutral paper below.",
+      "One typeface (Archivo variable, wght 100–900, wdth 62–125%), with width as the main hierarchy lever.",
+      "Real cut-out product photos on a lit disc; no stock imagery, no illustration.",
+      "Pills for actions, rounded rectangles for selectors, circles for colour, hairlines for structure."
+    ],
+    "rules": [
+      {
+        "name": "The One Room Rule",
+        "body": "The showroom has no colour of its own. Every room token is derived from the selected garment hex by `roomFor()`; never hand-pick a showroom background, accent or border.",
+        "section": "colors"
+      },
+      {
+        "name": "The AA Floor Rule",
+        "body": "Room ink always clears 4.5:1 because it is picked from two extremes; secondary room ink is allowed to soften only while it stays at or above 4.5:1, otherwise it becomes full ink.",
+        "section": "colors"
+      },
+      {
+        "name": "The Display-Only Wall Rule",
+        "body": "`room-wall` (3.07–4.88:1) is reserved for the back-wall model name, set at display size (64px floor on desktop). It never carries body text, labels or controls.",
+        "section": "colors"
+      },
+      {
+        "name": "The Hairline-Is-Not-A-Cue Rule",
+        "body": "`room-line` and `paper-line` sit under 3:1 by design. Selected and focused states always switch to full ink (border, inset ring, fill or outline), never to a stronger hairline.",
+        "section": "colors"
+      },
+      {
+        "name": "The Width-Is-Rank Rule",
+        "body": "Hierarchy is carried by the width axis as much as by size: 125% for identity (wall, section heads, wordmark), 108–115% for product names and prices, 100% for reading text. Never set body copy expanded.",
+        "section": "typography"
+      },
+      {
+        "name": "The Spec-Sheet Numerals Rule",
+        "body": "Numbers are tabular everywhere; prices are formatted `tr-TR` with \" TL\" and \"’den\" for from-prices.",
+        "section": "typography"
+      },
+      {
+        "name": "The Lit-Object Rule",
+        "body": "Shadows belong to objects that physically sit in the showroom (figure, disc, paint chips, the one primary button) and to overlays. Paper content is flat.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do derive every showroom colour from the garment hex through `roomFor()`; add a colourway by adding its sampled `hex` to `products.js`, nothing else.",
+      "Do keep secondary room text at or above 4.5:1; when the 10% softening fails, use full room ink (the existing fallback).",
+      "Do reserve `room-wall` for the display-size back-wall name (64px floor on desktop, 900 weight, wdth 125%).",
+      "Do switch to full ink (border, inset ring, fill or 2px outline) for every selected and focused state; hairlines alone never signal state.",
+      "Do set identity type at Archivo 900, wdth 125%, tight negative tracking (-0.02 to -0.035em), and reading type at normal width with tabular numerals.",
+      "Do present products as the real cut-out WebP photos, standing on the lit disc, using the `crop` flag to fade half-body and shorts shots.",
+      "Do use pills for actions, rounded rectangles for selectors, circles for colour, hairlines for structure.",
+      "Do keep paper sections flat: `paper`, `paper-ink`, `paper-ink-2`, `paper-line`, and 2px ink rules for emphasis."
+    ],
+    "donts": [
+      "Don't introduce a fixed brand accent or a showroom colour that is not derived from the selected garment.",
+      "Don't set body text, labels or controls in `room-wall`, `room-line` or `paper-line`.",
+      "Don't replace the single configured piece with a full-bleed campaign slider over a grid of equal product cards.",
+      "Don't put shadows on paper content, tables or the bar; depth is for the figure, disc, chips, primary button and overlays.",
+      "Don't add a second typeface or set long text expanded.",
+      "Don't show testimonials, badges or claims the catalogue data does not hold; ratings appear only as Trendyol ratings with their review count."
+    ]
+  }
+}
