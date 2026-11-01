@@ -156,18 +156,18 @@ a { color: inherit; text-underline-offset: .22em; text-decoration-thickness: 1px
 }
 /* half-body shots: the frame cuts the photo at the bottom, so it fades into the plinth */
 .figure[data-crop="bottom"] {
-  height: clamp(340px, calc(100svh - 400px), 660px);
+  height: clamp(320px, calc(100svh - 420px), 640px);
   -webkit-mask-image: linear-gradient(to bottom, #000 84%, transparent 100%);
           mask-image: linear-gradient(to bottom, #000 84%, transparent 100%);
-  margin-bottom: 66px;
+  margin-bottom: 96px; /* the fade ends on the disc's back edge */
   filter: none;
 }
 /* shorts: cut at the chest, fade at the top */
 .stage[data-crop="top"] { padding-top: clamp(150px, 17vw, 250px); }
 .figure[data-crop="top"] {
   height: clamp(300px, calc(100svh - 470px), 560px);
-  -webkit-mask-image: linear-gradient(to top, #000 80%, transparent 99%);
-          mask-image: linear-gradient(to top, #000 80%, transparent 99%);
+  -webkit-mask-image: linear-gradient(to top, #000 58%, transparent 100%);
+          mask-image: linear-gradient(to top, #000 58%, transparent 100%);
   filter: drop-shadow(0 6px 6px rgb(0 0 0 / .16));
 }
 
